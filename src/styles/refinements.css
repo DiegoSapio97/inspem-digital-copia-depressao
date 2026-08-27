@@ -1,0 +1,29 @@
+/* Direção visual: Clínica editorial noturna INSPEM — refinements.css; preservar fundo grafite, violeta #A670DB, Fraunces + Inter e foco mobile-first. */
+/* INSPEM — visual refinement layer
+   Editorial clarity + warm, photography-led restraint. */
+
+:root {
+  --bg: #111214;
+  --bg-elevated: #191a1e;
+  --bg-soft: #15161a;
+  --surface-high: #202126;
+  --accent: #c6a3ea;
+  --accent-strong: #aa7edf;
+  --accent-soft: rgba(198, 163, 234, 0.11);
+  --primary: #8352c7;
+  --primary-hover: #9463d8;
+  --wa: #176b3a;
+  --wa-hover: #1d7d46;
+  --text: #fbf9fc;
+  --body: #ddd9e0;
+  --muted: #aaa5ae;
+  --border: rgba(255, 255, 255, 0.105);
+  --border-strong: rgba(198, 163, 234, 0.28);
+  --star: #f4bc5f;
+  --container: 1160px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --shadow-soft: 0 18px 54px rgba(0, 0, 0, 0.18);
+  --shadow-image: 0 32px 80px rgba(0, 0, 0, 0.32);
+}
