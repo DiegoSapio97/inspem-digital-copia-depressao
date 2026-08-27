@@ -1,0 +1,22 @@
+---
+import WhatsAppButton from './WhatsAppButton.astro';
+
+const navLinks = [
+  { href: "#equipe", label: "Equipe" },
+  { href: "#como-funciona", label: "Como funciona" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#localizacao", label: "Localização" },
+];
+---
+
+<header>
+  <a class="logo" href="#top">
+    <img src="/assets/logo-inspem-header_a08984b5.webp" alt="INSPEM — Instituto Percepção de Psicologia Empírica" />
+  </a>
+  <nav aria-label="Navegação principal">
+    {navLinks.map(link => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+    <WhatsAppButton text="WhatsApp" showIcon={false} target="_blank" rel="noopener" />
+  </nav>
+</header>
