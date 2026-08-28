@@ -1,3 +1,5 @@
+import { photos } from './photos';
+
 export const siteConfig = {
   title: "INSPEM — Psicoterapia em TCC · Bom Fim · Porto Alegre",
   description: "Clínica de psicologia baseada em evidências no Bom Fim, Porto Alegre. TCC, supervisão semanal, nota 5,0 no Google. Em frente ao Parque da Redenção.",
@@ -36,7 +38,7 @@ export const siteConfig = {
       fullName: "Simone Sandri Modesti",
       role: "Supervisora clínica · CRP 07/2433",
       crp: "CRP 07/2433",
-      photo: "/assets/supervisora-simone_059072ac.webp",
+      photo: photos.simone,
       qualifications: [
         "Mestrado em Psicologia",
         "Responsável técnica da clínica"
@@ -47,7 +49,7 @@ export const siteConfig = {
       fullName: "Ingrid Francke",
       role: "Supervisora clínica · fundadora",
       crp: "CRP 07/18623",
-      photo: "/assets/supervisora-ingrid_369c6147.webp",
+      photo: photos.ingrid,
       qualifications: [
         "Doutorado em Saúde Coletiva",
         "Especialização em prática baseada em evidências",

@@ -1,5 +1,7 @@
 ---
 import WhatsAppButton from './WhatsAppButton.astro';
+import Photo from './Photo.astro';
+import { photos } from '../data/photos';
 
 const navLinks = [
   { href: "#equipe", label: "Equipe" },
@@ -11,7 +13,7 @@ const navLinks = [
 
 <header>
   <a class="logo" href="#top">
-    <img src="/assets/logo-inspem-header_a08984b5.webp" alt="INSPEM — Instituto Percepção de Psicologia Empírica" />
+    <Photo photo={photos.logo} />
   </a>
   <nav aria-label="Navegação principal">
     {navLinks.map(link => (

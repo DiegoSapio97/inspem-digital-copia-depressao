@@ -1,5 +1,7 @@
 ---
 import { siteConfig } from '../data/siteConfig';
+import Photo from './Photo.astro';
+import { photos } from '../data/photos';
 ---
 
 <main class="hero">
@@ -24,7 +26,7 @@ import { siteConfig } from '../data/siteConfig';
   </div>
 
   <figure class="hero-photo">
-    <img src="/assets/ingrid-consultorio_01f79ed7.webp" alt="Ingrid Francke na entrada do consultório do INSPEM, no bairro Bom Fim, em Porto Alegre" width="800" height="1067" fetchpriority="high" />
-    <figcaption>Ingrid Francke na entrada do consultório, Bom Fim</figcaption>
+    <Photo photo={photos.hero} />
+    <figcaption>{photos.hero.caption}</figcaption>
   </figure>
 </main>
