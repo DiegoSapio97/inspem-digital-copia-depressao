@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-O `npm install` baixa as fotos do repositório original (os binários não entram pelo MCP). O servidor sobe em `http://localhost:4329`.
+O `npm install` baixa as fotos do repositório original (os binários não entram pelo MCP) e gera o `package-lock.json`. O servidor sobe em `http://localhost:4329`.
 
 | Comando | O que faz |
 | --- | --- |
@@ -25,6 +25,10 @@ O `npm install` baixa as fotos do repositório original (os binários não entra
 
 Troque os arquivos em `public/assets/` **com o mesmo nome**. Catálogo em `src/data/photos.ts`.
 
+A fachada (`fachada.webp`) é a única foto empilhada. As salas deslizam no carrossel: atendimento, espera, entrada, sala da equipe.
+
+O logotipo novo (wordmark) não entra pelo MCP. O `npm install` baixa o logo do repositório original. Para usar o wordmark novo, substitua `public/assets/logo.webp` depois do install.
+
 | Arquivo | Onde aparece |
 | --- | --- |
 | `logo.webp` | Header, rodapé e favicon |
@@ -32,7 +36,7 @@ Troque os arquivos em `public/assets/` **com o mesmo nome**. Catálogo em `src/d
 | `equipe.webp` | Foto da equipe |
 | `supervisora-simone.webp` | Card da Simone |
 | `supervisora-ingrid.webp` | Card da Ingrid |
-| `fachada.webp` | Destaque da galeria |
+| `fachada.webp` | Destaque da galeria (única foto empilhada) |
 | `sala-espera.webp` | Carrossel das salas |
 | `entrada.webp` | Carrossel das salas |
 | `sala-atendimento.webp` | Carrossel das salas |
