@@ -1,12 +1,14 @@
 ---
 import { siteConfig } from '../data/siteConfig';
+import Photo from './Photo.astro';
+import { photos } from '../data/photos';
 ---
 
 <footer id="footer" class="site-footer" aria-label="Rodapé institucional">
   <div class="footer-wrap">
     <div class="footer-brand">
       <a class="footer-brand-name" href="#top" aria-label="INSPEM — voltar ao início">
-        <img src="/assets/logo-inspem-header_a08984b5.webp" alt="INSPEM — Instituto Percepção de Psicologia Empírica" />
+        <Photo photo={photos.logo} />
       </a>
     </div>
 

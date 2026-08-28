@@ -4,7 +4,6 @@ import { siteConfig } from '../data/siteConfig';
 const faqs = [
   {
     question: "E se eu não souber o que falar na primeira sessão?",
-    open: true,
     answers: [
       "Você não precisa chegar com nada pronto. É a dúvida mais comum de quem nunca fez terapia — e a resposta é simples: <strong>o terapeuta conduz a conversa</strong>, com perguntas que ajudam você a se organizar.",
       'Dizer <em>"estou nervoso e não sei por onde começar"</em> já é um excelente começo. O silêncio também é bem-vindo. Você fala no seu ritmo, sem precisar contar tudo de uma vez.'
@@ -76,7 +75,7 @@ const faqs = [
 
     <div class="faq">
       {faqs.map(faq => (
-        <details id={faq.id} class={faq.className} name={faq.name} open={faq.open}>
+        <details id={faq.id} class={faq.className} name={faq.name}>
           <summary>
             {faq.question}
             <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2">

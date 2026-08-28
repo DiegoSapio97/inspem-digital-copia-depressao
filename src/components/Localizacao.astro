@@ -1,5 +1,7 @@
 ---
 import { siteConfig } from '../data/siteConfig';
+import Photo from './Photo.astro';
+import { galleryHero, galleryRooms } from '../data/photos';
 
 const accessCards = [
   {
@@ -23,38 +25,6 @@ const accessCards = [
   }
 ];
 
-const galleryPhotos = [
-  {
-    src: "/assets/fachada-baltimore_dbfddbea.webp",
-    alt: "Fachada do Edifício Baltimore à noite, na Av. Osvaldo Aranha, 1022",
-    caption: "Edifício Baltimore — fachada e acesso",
-    wide: true
-  },
-  {
-    src: "/assets/consultorio-sala-espera_1698daab.webp",
-    alt: "Sala de espera da clínica INSPEM",
-    caption: "Sala de espera",
-    wide: false
-  },
-  {
-    src: "/assets/consultorio-entrada_79d99e1f.webp",
-    alt: "Entrada do consultório INSPEM",
-    caption: "Entrada do consultório",
-    wide: false
-  },
-  {
-    src: "/assets/consultorio-sala-atendimento_bf036d93.webp",
-    alt: "Sala de atendimento da clínica INSPEM",
-    caption: "Sala de atendimento",
-    wide: true
-  },
-  {
-    src: "/assets/consultorio-sala-equipe_8dd520a7.webp",
-    alt: "Sala da equipe da clínica INSPEM",
-    caption: "Sala da equipe",
-    wide: true
-  }
-];
 ---
 
 <section id="localizacao" class="section">
@@ -102,12 +72,59 @@ const galleryPhotos = [
   </div>
 
   <p class="gallery-label">O espaço, como ele é</p>
-  <div class="gallery">
-    {galleryPhotos.map(photo => (
-      <figure class={photo.wide ? "wide" : undefined}>
-        <img src={photo.src} alt={photo.alt} loading="lazy" />
-        <figcaption>{photo.caption}</figcaption>
-      </figure>
-    ))}
+  <figure class="gallery-hero">
+    <Photo photo={galleryHero} loading="lazy" />
+    <figcaption>{galleryHero.caption}</figcaption>
+  </figure>
+  <div class="gallery-strip" role="region" aria-roledescription="carrossel" aria-label="Fotos das salas">
+    <div class="gallery-toolbar">
+      <p class="gallery-hint">Deslize para o lado para ver as salas</p>
+      <div class="gallery-nav">
+        <button type="button" class="gallery-nav-btn" data-dir="-1" aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+        </button>
+        <button type="button" class="gallery-nav-btn" data-dir="1" aria-label="Próxima foto">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+        </button>
+      </div>
+    </div>
+    <div class="gallery-track" tabindex="0">
+      {galleryRooms.map(photo => (
+        <figure>
+          <Photo photo={photo} loading="lazy" />
+          <figcaption>{photo.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
   </div>
 </section>
+
+<script>
+  const strip = document.querySelector('#localizacao .gallery-strip');
+  const track = strip?.querySelector('.gallery-track');
+
+  if (strip instanceof HTMLElement && track instanceof HTMLElement) {
+    const scrollByCard = (dir: number) => {
+      const card = track.querySelector('figure');
+      if (!(card instanceof HTMLElement)) return;
+      const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 12;
+      track.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: 'smooth' });
+    };
+
+    strip.querySelectorAll('.gallery-nav-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        scrollByCard(Number((btn as HTMLButtonElement).dataset.dir));
+      });
+    });
+
+    track.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        scrollByCard(1);
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        scrollByCard(-1);
+      }
+    });
+  }
+</script>

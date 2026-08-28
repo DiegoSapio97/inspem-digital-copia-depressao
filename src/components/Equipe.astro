@@ -1,5 +1,7 @@
 ---
 import { siteConfig } from '../data/siteConfig';
+import Photo from './Photo.astro';
+import { photos } from '../data/photos';
 ---
 
 <section id="equipe" class="section">
@@ -8,15 +10,15 @@ import { siteConfig } from '../data/siteConfig';
   <p class="lead">Uma equipe inteira acompanha o seu caso — com duas supervisoras revisando cada detalhe, <span class="accent">toda semana</span>.</p>
 
   <figure class="team-photo">
-    <img src="/assets/equipe-inspem_7eb2d3c6.webp" alt="Equipe da INSPEM: supervisoras e estagiários no consultório, no Bom Fim" />
-    <figcaption>A equipe da INSPEM no consultório, Bom Fim — Porto Alegre</figcaption>
+    <Photo photo={photos.equipe} />
+    <figcaption>{photos.equipe.caption}</figcaption>
   </figure>
 
   <p class="sup-label">Quem supervisiona o seu caso</p>
   <div class="supervisors">
     {siteConfig.supervisors.map(sup => (
       <div class="sup">
-        <img src={sup.photo} alt={`${sup.name}, supervisora clínica da INSPEM`} />
+        <Photo photo={sup.photo} />
         <div>
           <h3>{sup.name}</h3>
           <p class="role">{sup.role}</p>
