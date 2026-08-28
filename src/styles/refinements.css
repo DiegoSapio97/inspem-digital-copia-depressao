@@ -1,4 +1,4 @@
-/* Direção visual: Clínica editorial noturna INSPEM — refinements.css; preservar fundo grafite, violeta #A670DB, Fraunces + Inter e foco mobile-first. */
+/* Direção visual: Clínica editorial noturna INSPEM — refinements.css; Newsreader + sistema, fundo grafite, violeta #A670DB, foco mobile-first. */
 /* INSPEM — visual refinement layer
    Editorial clarity + warm, photography-led restraint. */
 
@@ -26,6 +26,8 @@
   --radius-lg: 28px;
   --shadow-soft: 0 18px 54px rgba(0, 0, 0, 0.18);
   --shadow-image: 0 32px 80px rgba(0, 0, 0, 0.32);
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --serif: "Newsreader", "Newsreader Fallback", Georgia, serif;
 }
 
 html {
@@ -63,16 +65,24 @@ summary:focus-visible {
 }
 
 header {
-  min-height: 76px;
-  padding: 14px max(24px, calc((100vw - var(--container)) / 2));
+  min-height: 88px;
+  padding: 12px max(24px, calc((100vw - var(--container)) / 2));
   border-bottom-color: rgba(255, 255, 255, 0.08);
   background: rgba(17, 18, 20, 0.82);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
+.logo {
+  flex-shrink: 0;
+}
+
 .logo img {
-  height: 42px;
+  width: min(280px, 62vw);
+  height: auto;
+  max-height: 70px;
+  object-fit: contain;
+  object-position: left center;
   filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.18));
 }
 
@@ -247,7 +257,7 @@ h2 em,
 }
 
 .social-proof b {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--sans);
   font-size: 14px;
   font-weight: 650;
 }
@@ -474,7 +484,7 @@ h2 {
 }
 
 .schedule .s-big {
-  font-family: 'Fraunces', serif;
+  font-family: var(--serif);
   font-size: 24px;
   font-weight: 500;
 }
@@ -521,7 +531,7 @@ h2 {
   border: 1px solid var(--border-strong);
   border-radius: 50%;
   color: var(--accent);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--sans);
   font-size: 14px;
   font-weight: 700;
 }
@@ -541,7 +551,7 @@ h2 {
     right: -13px;
     top: 41px;
     display: grid;
-  width: 26px;
+    width: 26px;
     height: 26px;
     place-items: center;
     border-radius: 50%;
@@ -642,14 +652,16 @@ h2 {
 }
 
 .quote p {
-  font-family: 'Fraunces', serif;
+  font-family: var(--serif);
   font-size: 23px;
   line-height: 1.45;
 }
 
 .loc-grid,
 .access,
-.gallery {
+.gallery,
+.gallery-hero,
+.gallery-strip {
   max-width: 1160px;
 }
 
@@ -741,6 +753,133 @@ h2 {
   background: rgba(17, 18, 20, 0.74);
   color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
+}
+
+.gallery-hero {
+  position: relative;
+  width: 100%;
+  margin: 0 0 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.gallery-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 5;
+  object-fit: cover;
+}
+
+.gallery-hero figcaption,
+.gallery-track figcaption {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(17, 18, 20, 0.74);
+  color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.gallery-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.gallery-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.gallery-nav {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.gallery-nav-btn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.gallery-nav-btn:hover,
+.gallery-nav-btn:focus-visible {
+  border-color: var(--border-strong);
+  background: var(--accent-soft);
+  outline: none;
+}
+
+.gallery-nav-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-track figure {
+  position: relative;
+  flex: 0 0 78%;
+  max-width: 420px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  scroll-snap-align: start;
+}
+
+.gallery-track img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+@media (min-width: 861px) {
+  .gallery-track figure {
+    flex-basis: min(72%, 480px);
+    max-width: 480px;
+  }
+
+  .gallery-track img {
+    height: 240px;
+  }
 }
 
 #faq {
@@ -876,13 +1015,13 @@ details[open] {
 }
 
 @keyframes hero-copy-in {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { transform: translateY(18px); }
+  to { transform: translateY(0); }
 }
 
 @keyframes hero-image-in {
-  from { opacity: 0; transform: translateY(24px) scale(0.985); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from { transform: translateY(24px) scale(0.985); }
+  to { transform: translateY(0) scale(1); }
 }
 
 @media (max-width: 1180px) {
@@ -930,13 +1069,14 @@ details[open] {
 
 @media (max-width: 760px) {
   header {
-    min-height: 68px;
-    padding: 11px 18px;
+    min-height: 84px;
+    padding: 12px 16px;
   }
 
   .logo img {
-    height: 38px;
-    max-width: 150px;
+    width: min(268px, calc(100% - 118px));
+    height: auto;
+    max-height: 68px;
     object-fit: contain;
   }
 
@@ -1105,8 +1245,9 @@ details[open] {
   }
 
   .logo img {
-    width: 128px;
+    width: min(240px, calc(100% - 112px));
     height: auto;
+    max-height: 60px;
   }
 
   header .btn-wa {
@@ -1519,7 +1660,7 @@ details[open] {
   max-width: none;
   margin: 0;
   color: var(--accent);
-  font-family: 'Fraunces', serif;
+  font-family: var(--serif);
   font-size: clamp(64px, 7vw, 92px);
   font-weight: 500;
   line-height: 0.92;
@@ -1659,9 +1800,9 @@ details[open] {
 
 .footer-brand-name img {
   display: block;
-  width: min(220px, 72vw);
+  width: min(280px, 86vw);
   height: auto;
-  max-height: 72px;
+  max-height: 70px;
   object-fit: contain;
   object-position: left center;
 }
